@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Roles</title>
+</head>
+<body>
+    <h1>Roles</h1>
+    <table>
+        <!-- Display existing roles -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Role</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+     <tbody>
+            <tr th:each="Role:${Roles}">
+                <td th:text="${Role.Id}"></td>
+                <td th:text="${Role.Role}"></td>
+                <td th:text="${Role.Description}"></td>
+                <td><a href="adminPermission">View</a></td>
+            </tr>
+        </tbody>   
+    </table>
+
+    <!-- Form for adding new roles -->
+
+</body>
+</html>

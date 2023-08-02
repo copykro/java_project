@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Role Permission Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1>Role Permission Page</h1>
+    <form id="rolePermissionForm" th:action="@{/apply}" method="post">
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="checkAll">
+                <label class="custom-control-label" for="checkAll">Check All</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="permission1" name="permissions" value="permission1">
+                <label class="custom-control-label" for="permission1">Permission 1</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="permission2" name="permissions" value="permission2">
+                <label class="custom-control-label" for="permission2">Permission 2</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="permission3" name="permissions" value="permission3">
+                <label class="custom-control-label" for="permission3">Permission 3</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Apply</button>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Check All button functionality
+        $("#checkAll").click(function () {
+            $("input[name='permissions']").prop('checked', this.checked);
+        });
+    });
+</script>
+
+</body>
+</html>

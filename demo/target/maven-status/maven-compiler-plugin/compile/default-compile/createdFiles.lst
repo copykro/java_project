@@ -1,0 +1,12 @@
+com\example\demo\DemoApplication.class
+com\example\demo\service\UserService.class
+com\example\demo\entity\UserDetails.class
+com\example\demo\repository\UserRepository.class
+com\example\demo\service\OTPService.class
+com\example\demo\repository\add_user_repository.class
+com\example\demo\controller\UserController.class
+com\example\demo\repository\RoleRepository.class
+com\example\demo\entity\OTP.class
+com\example\demo\util\OTPGenerator.class
+com\example\demo\entity\Roles.class
+com\example\demo\entity\Edit.class
