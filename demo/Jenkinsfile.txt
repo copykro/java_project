@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    tools {
+    
+        maven 'MAVEN'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    echo 'Hello World'
+     
+                    
+                    def pomPath = '/var/jenkins_home/workspace/vaccination/demo/pom.xml'
+                    
+                    sh "mvn -f \"${pomPath}\" -Dmaven.test.failure.ignore=true clean package"
+                }
+            }
+        }
+
+        stage('Deploy to Tomcat') {
+            steps {
+                script {
+                   // def tomcatCredentials = credentials('123')
+                   // def tomcatUsername = tomcatCredentials.username
+                  //  def tomcatPassword = tomcatCredentials.password
+deploy adapters: [tomcat9(credentialsId: '123', path: '', url: 'http://localhost:8080/')], contextPath: null, war: '**/*.war'
+                }
+            }
+        }
+    }
+    post { 
+        always {
+            junit(allowEmptyResults: true, testResults: '*/test-reports/*.xml')
+        }
+    }
+}
