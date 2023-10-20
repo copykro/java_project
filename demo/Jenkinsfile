@@ -9,7 +9,7 @@ pipeline {
             steps {
                 script {
                     echo 'Hello World'
-     
+                     checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/copykro/java_project.git']])
                     
                     def pomPath = '/var/jenkins_home/workspace/vaccination/demo/pom.xml'
                     
@@ -21,9 +21,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 script {
-                   // def tomcatCredentials = credentials('123')
-                   // def tomcatUsername = tomcatCredentials.username
-                  //  def tomcatPassword = tomcatCredentials.password
+              
 deploy adapters: [tomcat9(credentialsId: '123', path: '', url: 'http://localhost:8080/')], contextPath: null, war: '**/*.war'
                 }
             }
