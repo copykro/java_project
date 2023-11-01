@@ -28,6 +28,7 @@ pipeline {
                         def tomcatServer = 'http://172.16.1.105:8080/'
                       def tomcatUser = 'admin'
                       def remotePath = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps'
+                      sh "copy ${jarFile} ${remotePath}"
 deploy adapters: [tomcat9(credentialsId: '123', path: '', url: 'tomcatServer')], contextPath: null, war:warFile
                 }
             }
