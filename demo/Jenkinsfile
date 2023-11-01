@@ -25,7 +25,10 @@ pipeline {
                         script: 'find . -name "*.jar"',
                         returnStdout: true
                     ).trim()
-deploy adapters: [tomcat9(credentialsId: '123', path: '', url: 'http://localhost:8080/')], contextPath: null, war:warFile
+                        def tomcatServer = 'http://172.16.1.105:8080/'
+                      def tomcatUser = 'admin'
+                      def remotePath = 'C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps'
+deploy adapters: [tomcat9(credentialsId: '123', path: '', url: 'tomcatServer')], contextPath: null, war:warFile
                 }
             }
         }
