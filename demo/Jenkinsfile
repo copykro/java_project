@@ -10,7 +10,7 @@ pipeline {
                 script {
                     echo 'Hello World'
                      checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/copykro/java_project.git']])
-                      sh  "mvn clean package"
+                   
                     def pomPath = '/var/jenkins_home/workspace/vaccination/demo/pom.xml'
                     
                     sh "mvn -f \"${pomPath}\" -Dmaven.test.failure.ignore=true clean package"
